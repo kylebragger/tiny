@@ -39,7 +39,7 @@ module Tiny
     def untiny(str)
       radix  = TINY_SET.length
       strlen = str.length
-      n = 0
+      n      = 0
       (0..strlen - 1).each do |i|
         n += TINY_SET.index(str[i,1]) * (radix ** (strlen - i - 1))
       end
