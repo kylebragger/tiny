@@ -1,10 +1,10 @@
 #
 # Tiny
 #
-# A reversible base62 ID obfuscator
+# A reversible base62 ID obfuscater
 #
 # Authors:
-#  Jacob DeHart and Kyle Bragger
+#  Jacob DeHart (original PHP version) and Kyle Bragger (Ruby port)
 #
 
 module Tiny
