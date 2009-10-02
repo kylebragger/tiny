@@ -37,10 +37,12 @@ module Tiny
 end
 
 # Test
+puts Tiny::tiny(-12345)
 puts Tiny::tiny(12345)
 puts Tiny::tiny(64)
 puts Tiny::tiny(1)
 puts Tiny::tiny(0)
+puts Tiny::untiny(Tiny::tiny(-12345))
 puts Tiny::untiny(Tiny::tiny(12345))
 puts Tiny::untiny(Tiny::tiny(64))
 puts Tiny::untiny(Tiny::tiny(1))
