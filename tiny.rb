@@ -8,7 +8,7 @@
 #
 
 module Tiny
-  TINY_SET = "Ed5M8ol0fUxNAJTcZYXyFsOvte2Sjmn43I6wBDah1kiKWbqCLpzQ79ugrPRVGH"
+  TINY_SET = "__paste the result of generate_set() here__"
   
   class << self
     def tiny(id)
@@ -33,10 +33,25 @@ module Tiny
       end
       return n.to_s
     end
+    
+    def generate_set
+      base_set = ("a".."z").to_a + ("A".."Z").to_a + (0..9).to_a
+      base_set = randomize_array(base_set).to_s
+      puts "generate_set()"
+      puts base_set
+    end
+    
+    # Based on: http://www.ruby-forum.com/topic/92083#185073
+    def randomize_array(arr)
+      orig_a, new_a = arr.dup, []
+      new_a << orig_a.slice!(rand(orig_a.size)) until new_a.size.eql?(arr.size)
+      return new_a
+    end
   end
 end
 
 # Test
+puts Tiny::generate_set
 puts Tiny::tiny(-12345)
 puts Tiny::tiny(12345)
 puts Tiny::tiny(64)
