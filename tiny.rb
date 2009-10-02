@@ -45,16 +45,9 @@ module Tiny
     
     def generate_set
       base_set = ("a".."z").to_a + ("A".."Z").to_a + (0..9).to_a
-      base_set = randomize_array(base_set).to_s
+      base_set = base_set.sort_by{ rand }.to_s
       puts "generate_set()"
       puts base_set
-    end
-    
-    # Based on: http://www.ruby-forum.com/topic/92083#185073
-    def randomize_array(arr)
-      orig_a, new_a = arr.dup, []
-      new_a << orig_a.slice!(rand(orig_a.size)) until new_a.size.eql?(arr.size)
-      return new_a
     end
   end
 end
