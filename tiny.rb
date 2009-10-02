@@ -11,30 +11,33 @@
 #  original_id = Tiny::untiny(obfuscated_id)
 #
 # Configuration:
-#  You must run Tiny::generate_set() from console to generate your TINY_SET
-#  Do *not* change this once you start using Tiny, as you won't be able to untiny()
-#  any values tiny()'ed with another set.
+#  * You must run Tiny::generate_set() from console to generate your TINY_SET
+#    Do *not* change this once you start using Tiny, as you won't be able to untiny()
+#    any values tiny()'ed with another set.
+#  * generate_set() will also print a value for TINY_EPOCH; once set, this shouldn't be
+#    changed either.
 #
 
 module Tiny
-  TINY_SET = "__paste the result of generate_set() here__"
+  TINY_SET   = "jCqOAt5JmRa8Vo3nyHbcrki0QzLXdpvTIuFP9GWYBZE41x2hfN7eswMSlgDKU6"
+  TINY_EPOCH = 1254511805.75137
   
   class << self
     def tiny(id)
       hex_n = ''
-      id = id.to_i.abs.floor
+      id    = id.to_i.abs.floor
       radix = TINY_SET.length
       while true
-        r = id % radix
+        r     = id % radix
         hex_n = TINY_SET[r,1] + hex_n
-        id = (id - r) / radix
+        id    = (id - r) / radix
         break if id == 0
       end
       return hex_n
     end
 
     def untiny(str)
-      radix = TINY_SET.length
+      radix  = TINY_SET.length
       strlen = str.length
       n = 0
       (0..strlen - 1).each do |i|
@@ -43,17 +46,23 @@ module Tiny
       return n.to_s
     end
     
+    # Same as tiny() but use the current UNIX timestamp - TINY_EPOCH (hat tip: Nir Yariv)
+    def tiny_from_timestamp
+      tiny((Time.now.to_f - TINY_EPOCH).abs)
+    end
+    
     def generate_set
       base_set = ("a".."z").to_a + ("A".."Z").to_a + (0..9).to_a
       base_set = base_set.sort_by{ rand }.to_s
       puts "generate_set()"
       puts base_set
+      puts "TINY_EPOCH = #{Time.now.to_f}"
     end
   end
 end
 
 # Test
-puts Tiny::generate_set
+Tiny::generate_set
 puts Tiny::tiny(-12345)
 puts Tiny::tiny(12345)
 puts Tiny::tiny(64)
@@ -64,3 +73,16 @@ puts Tiny::untiny(Tiny::tiny(12345))
 puts Tiny::untiny(Tiny::tiny(64))
 puts Tiny::untiny(Tiny::tiny(1))
 puts Tiny::untiny(Tiny::tiny(0))
+
+time_now  = Time.now.to_i
+tiny_time = Tiny::tiny(time_now)
+puts "#{time_now} -> #{tiny_time} -> #{Tiny::untiny(tiny_time)}"
+
+puts Tiny::tiny_from_timestamp; sleep(0.1);
+puts Tiny::tiny_from_timestamp; sleep(0.1);
+puts Tiny::tiny_from_timestamp; sleep(0.1);
+puts Tiny::tiny_from_timestamp; sleep(0.1);
+puts Tiny::tiny_from_timestamp; sleep(0.1);
+puts Tiny::tiny_from_timestamp; sleep(0.1);
+puts Tiny::tiny_from_timestamp; sleep(0.1);
+puts Tiny::tiny_from_timestamp; sleep(0.1);
