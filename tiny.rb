@@ -32,7 +32,7 @@ module Tiny
   class << self
     def tiny(id)
       hex_n = ''
-      id = id.to_i.floor.abs
+      id = id.to_i.abs.floor
       radix = TINY_SET.length
       while true
         r = id % radix
