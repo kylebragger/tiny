@@ -47,5 +47,6 @@ class Tiny {
     }
 }
 
+// Testing
 echo Tiny::toTiny(123);
 echo Tiny::reverseTiny(Tiny::toTiny(123));
