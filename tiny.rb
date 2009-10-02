@@ -10,7 +10,7 @@
 #  obfuscated_id = Tiny::tiny(123)
 #  original_id = Tiny::untiny(obfuscated_id)
 #
-# Installation:
+# Configuration:
 #  You must run Tiny::generate_set() from console to generate your TINY_SET
 #  Do *not* change this once you start using Tiny, as you won't be able to untiny()
 #  any values tiny()'ed with another set.
