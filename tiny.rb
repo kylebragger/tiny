@@ -1,30 +1,11 @@
+#
 # Tiny
-# Ruby port of Jacob DeHart's PHP tiny/untiny functions
-
-# public function tiny($id){
-#     $set = 'Ed5M8ol0fUxNAJTcZYXyFsOvte2Sjmn43I6wBDah1kiKWbqCLpzQ79ugrPRVGH';
-# 
-#     $HexN="";
-#     $id = floor(abs(intval($id)));
-#     $radix = strlen($set);
-#     while (true) {
-#         $R=$id%$radix;
-#         $HexN = $set{$R}.$HexN;
-#         $id=($id-$R)/$radix;
-#         if ($id==0) break;
-#     }
-#     return $HexN;
-# }
-# public function reverseTiny($str){
-#     $set = 'Ed5M8ol0fUxNAJTcZYXyFsOvte2Sjmn43I6wBDah1kiKWbqCLpzQ79ugrPRVGH';
-#     $radix = strlen($set);
-#     $strlen = strlen($str);
-#     $N = 0;
-#     for($i=0;$i<$strlen;$i++){
-#         $N += strpos($set,$str{$i})*pow($radix,($strlen-$i-1));
-#     }
-#     return "{$N}";
-# }
+#
+# A reversible base62 ID obfuscator
+#
+# Authors:
+#  Jacob DeHart and Kyle Bragger
+#
 
 module Tiny
   TINY_SET = "Ed5M8ol0fUxNAJTcZYXyFsOvte2Sjmn43I6wBDah1kiKWbqCLpzQ79ugrPRVGH"
