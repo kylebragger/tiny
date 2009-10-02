@@ -19,7 +19,7 @@
 #
 
 module Tiny
-  TINY_SET   = "jCqOAt5JmRa8Vo3nyHbcrki0QzLXdpvTIuFP9GWYBZE41x2hfN7eswMSlgDKU6"
+  TINY_SET   = "__put the set output by generate_set() here__"
   TINY_EPOCH = 1254511805
   
   class << self
