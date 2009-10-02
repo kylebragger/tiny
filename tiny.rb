@@ -20,7 +20,7 @@
 
 module Tiny
   TINY_SET   = "__put the set output by generate_set() here__"
-  TINY_EPOCH = 1254511805
+  TINY_EPOCH = 0
   
   class << self
     def tiny(id)
