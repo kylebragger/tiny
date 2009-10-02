@@ -20,7 +20,7 @@
 
 module Tiny
   TINY_SET   = "jCqOAt5JmRa8Vo3nyHbcrki0QzLXdpvTIuFP9GWYBZE41x2hfN7eswMSlgDKU6"
-  TINY_EPOCH = 1254511805.75137
+  TINY_EPOCH = 1254511805
   
   class << self
     def tiny(id)
@@ -48,7 +48,7 @@ module Tiny
     
     # Same as tiny() but use the current UNIX timestamp - TINY_EPOCH (hat tip: Nir Yariv)
     def tiny_from_timestamp
-      tiny((Time.now.to_f - TINY_EPOCH).abs)
+      tiny(Time.now.to_f - TINY_EPOCH)
     end
     
     def generate_set
@@ -56,7 +56,7 @@ module Tiny
       base_set = base_set.sort_by{ rand }.to_s
       puts "generate_set()"
       puts base_set
-      puts "TINY_EPOCH = #{Time.now.to_f}"
+      puts "TINY_EPOCH = #{Time.now.to_i}"
     end
   end
 end
@@ -78,11 +78,11 @@ time_now  = Time.now.to_i
 tiny_time = Tiny::tiny(time_now)
 puts "#{time_now} -> #{tiny_time} -> #{Tiny::untiny(tiny_time)}"
 
-puts Tiny::tiny_from_timestamp; sleep(0.1);
-puts Tiny::tiny_from_timestamp; sleep(0.1);
-puts Tiny::tiny_from_timestamp; sleep(0.1);
-puts Tiny::tiny_from_timestamp; sleep(0.1);
-puts Tiny::tiny_from_timestamp; sleep(0.1);
-puts Tiny::tiny_from_timestamp; sleep(0.1);
-puts Tiny::tiny_from_timestamp; sleep(0.1);
-puts Tiny::tiny_from_timestamp; sleep(0.1);
+puts Tiny::tiny_from_timestamp
+puts Tiny::tiny_from_timestamp
+puts Tiny::tiny_from_timestamp
+puts Tiny::tiny_from_timestamp
+puts Tiny::tiny_from_timestamp
+puts Tiny::tiny_from_timestamp
+puts Tiny::tiny_from_timestamp
+puts Tiny::tiny_from_timestamp
