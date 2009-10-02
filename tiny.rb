@@ -1,3 +1,6 @@
+# Tiny
+# Ruby port of Jacob DeHart's PHP tiny/untiny functions
+
 # public function tiny($id){
 #     $set = 'Ed5M8ol0fUxNAJTcZYXyFsOvte2Sjmn43I6wBDah1kiKWbqCLpzQ79ugrPRVGH';
 # 
@@ -56,6 +59,8 @@ end
 puts Tiny::tiny(12345)
 puts Tiny::tiny(64)
 puts Tiny::tiny(1)
+puts Tiny::tiny(0)
 puts Tiny::untiny(Tiny::tiny(12345))
 puts Tiny::untiny(Tiny::tiny(64))
 puts Tiny::untiny(Tiny::tiny(1))
+puts Tiny::untiny(Tiny::tiny(0))
