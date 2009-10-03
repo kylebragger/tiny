@@ -48,7 +48,7 @@ module Tiny
     
     # Same as tiny() but use the current UNIX timestamp - TINY_EPOCH (hat tip: Nir Yariv)
     def tiny_from_timestamp
-      tiny(Time.now.to_f - TINY_EPOCH)
+      tiny(Time.now.to_i - TINY_EPOCH)
     end
     
     def generate_set
