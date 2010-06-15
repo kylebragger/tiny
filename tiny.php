@@ -21,7 +21,7 @@
 
 class Tiny {
     public static function toTiny($id){
-        $set = 'khvrbAfsCXEzIYt30ZdVLBQy5oJeglPHnu9M67qpKxUFj1OS8GawRTcm24DWiN';//'__use the set you generate with tiny.rb (see tiny.rb for more)__';
+        $set = 'EGu2P6St5snDOqd3jVRxf7gJWhk0AapLHYQCMKrlXF4TeN98vZBIbUyz1iwomc';//'__use the set you generate with tiny.rb (see tiny.rb for more)__';
 
         $HexN="";
         $id = floor(abs(intval($id)));
@@ -36,7 +36,7 @@ class Tiny {
     }
 
     public static function reverseTiny($str){
-        $set = 'khvrbAfsCXEzIYt30ZdVLBQy5oJeglPHnu9M67qpKxUFj1OS8GawRTcm24DWiN';//$set = '__use the SAME SET as tiny() above__';
+        $set = 'EGu2P6St5snDOqd3jVRxf7gJWhk0AapLHYQCMKrlXF4TeN98vZBIbUyz1iwomc';//$set = '__use the SAME SET as tiny() above__';
         $radix = strlen($set);
         $strlen = strlen($str);
         $N = 0;
@@ -45,8 +45,29 @@ class Tiny {
         }
         return "{$N}";
     }
+
+    public static function generate_set(){
+        $tiny_array = array();
+        for ($i=65;$i<91;$i++)
+        {
+                array_push($tiny_array,chr($i));
+        }
+        for ($i=97;$i<123;$i++)
+        {
+                array_push($tiny_array,chr($i));
+        }
+        for ($i=0;$i<=9;$i++)
+        {
+                $j = ord($i);
+                array_push($tiny_array,chr($j));
+        }
+        shuffle($tiny_array);
+        return join("",$tiny_array);
+    }
+	 
 }
 
 // Testing
-echo Tiny::toTiny(123);
+echo Tiny::generate_set() . "<br />";
+echo Tiny::toTiny(123) . "<br />";
 echo Tiny::reverseTiny(Tiny::toTiny(123));
