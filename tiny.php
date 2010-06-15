@@ -47,22 +47,14 @@ class Tiny {
     }
 
     public static function generate_set(){
-        $tiny_array = array();
-        for ($i=65;$i<91;$i++)
+        $arr = array();
+        for ($i = 65; $i <= 122; $i++)
         {
-                array_push($tiny_array,chr($i));
+            if ($i < 91 || $i > 96) $arr[] = chr($i);
         }
-        for ($i=97;$i<123;$i++)
-        {
-                array_push($tiny_array,chr($i));
-        }
-        for ($i=0;$i<=9;$i++)
-        {
-                $j = ord($i);
-                array_push($tiny_array,chr($j));
-        }
-        shuffle($tiny_array);
-        return join("",$tiny_array);
+        $arr = array_merge($arr, range(0, 9));
+        shuffle($arr);
+        return join('', $arr);
     }
 	 
 }
