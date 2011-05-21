@@ -53,9 +53,9 @@ module Tiny
     
     def generate_set
       base_set = ("a".."z").to_a + ("A".."Z").to_a + (0..9).to_a
-      base_set = base_set.sort_by{ rand }.to_s
+      base_set = base_set.sort_by{ rand }
       puts "generate_set()"
-      puts base_set
+      puts base_set.join('')
       puts "TINY_EPOCH = #{Time.now.to_i}"
     end
   end
