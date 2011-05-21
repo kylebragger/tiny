@@ -20,8 +20,10 @@
  */
 
 class Tiny {
+    public static $set = '__PUT SET HERE__';
+
     public static function toTiny($id){
-        $set = 'EGu2P6St5snDOqd3jVRxf7gJWhk0AapLHYQCMKrlXF4TeN98vZBIbUyz1iwomc';//'__use the set you generate with tiny.rb (see tiny.rb for more)__';
+        $set = self::$set;
 
         $HexN="";
         $id = floor(abs(intval($id)));
@@ -36,7 +38,7 @@ class Tiny {
     }
 
     public static function reverseTiny($str){
-        $set = 'EGu2P6St5snDOqd3jVRxf7gJWhk0AapLHYQCMKrlXF4TeN98vZBIbUyz1iwomc';//$set = '__use the SAME SET as tiny() above__';
+        $set = self::$set;
         $radix = strlen($set);
         $strlen = strlen($str);
         $N = 0;
